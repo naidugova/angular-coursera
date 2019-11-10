@@ -4,6 +4,6 @@ export class Promotion {
     image: string;
     label: string;
     price: string;
-    featured: string;
+    featured: boolean;
     description : string;
 }
