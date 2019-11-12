@@ -60,19 +60,22 @@
     </div>
   </div>
 
-  <div fxFlex>
+  <div fxFlex *ngIf="leaders">
     <div fxLayout="column" fxLayoutGap='20px'>
       <div class="coplead" *ngFor="let leader of leaders">
         <div fxFlex='5'>
           <img class="img-round" src={{leader.image}} alt={{leader.name}}>
         </div>
-        <div fxFlex>
+        <div fxFlex *ngIf="leaders">
           <h3>{{leader.name}} {{leader.abbr}}</h3>
           <p>{{leader.designation}}</p>
           <p>{{leader.description}}</p>
         </div>
       </div>
     </div>
+  </div>
+  <div [hidden]="leaders">
+    <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
   </div>
 
 </div>
