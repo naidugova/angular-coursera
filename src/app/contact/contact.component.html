@@ -35,7 +35,7 @@
       </div>
     </div>
   </div>
-  <div fxFlex fxFlexOffset="20px" class="form-size">
+  <div fxFlex fxFlexOffset="20px" class="form-size" [@expand] [hidden]="load">
     <h3>Send us your Feedback</h3>
     <p>{{ feedbackForm.value | json }} {{ feedbackForm.status | json }}</p>
 
@@ -79,5 +79,24 @@
       </p>
       <button [disabled]="feedbackForm.invalid" type="submit" mat-button class="background-primary text-floral-white">Submit</button>
     </form>
+  </div>
+  <div fxFlex [hidden]="!load || returnFeedback || errMess" [@expand]>
+    <h3>Send us your Feedback</h3>
+    <h3>Submitting your form</h3>
+    <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
+  </div>
+  <div fxFlex *ngIf="returnFeedback" [@expand]>
+    <h2>Your Submission</h2>
+    <p>First Name : {{returnFeedback.firstname}}</p>
+    <p>Last Name : {{returnFeedback.lastname}}</p>
+    <p>Tel. Number : {{returnFeedback.telnum}}</p>
+    <p>Email : {{returnFeedback.email}}</p>
+    <p>Contact You? : {{returnFeedback.agree}}</p>
+    <p>How? : {{returnFeedback.contacttype}}</p>
+    <p>Feedback : {{returnFeedback.message}}</p>
+  </div>
+  <div fxFlex *ngIf="errMess">
+    <h2>Error</h2>
+    <h4>{{errMess}}</h4>
   </div>
 </div>
