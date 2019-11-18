@@ -5,11 +5,21 @@ import { Promotion } from '../shared/promotion';
 import { PromotionService } from '../services/promotion.service';
 import { LeaderService } from '../services/leader.service';
 import { Leader } from '../shared/leader';
+import { flyInOut  , expand} from '../animations/app.animation';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  // tslint:disable-next-line:use-host-property-decorator
+  host: {
+    '[@flyInOut]': 'true',
+    'style': 'display: block;'
+    },
+    animations: [
+      flyInOut(),
+      expand()
+    ]
 })
 export class HomeComponent implements OnInit {
 
@@ -18,7 +28,7 @@ export class HomeComponent implements OnInit {
   promotion: Promotion;
   leader: Leader;
   disherrMess:string;
-  
+
   constructor(private dishService:DishService,
     private promotionService: PromotionService,
     private leaderService: LeaderService,

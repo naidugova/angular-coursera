@@ -60,7 +60,7 @@
     </div>
   </div>
 
-  <div fxFlex *ngIf="leaders">
+  <div fxFlex *ngIf="leaders" [@expand]>
     <div fxLayout="column" fxLayoutGap='20px'>
       <div class="coplead" *ngFor="let leader of leaders">
         <div fxFlex='5'>
